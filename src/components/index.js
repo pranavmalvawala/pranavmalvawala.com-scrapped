@@ -1,0 +1,11 @@
+export { default as Head } from "./Head";
+export { default as Navigation } from "./Navigation";
+export { default as Menu } from "./Menu";
+export { default as Social } from "./Social";
+export { default as Side } from "./Side";
+export { default as Footer } from "./Footer";
+export { default as Hero } from "./sections/Hero";
+export { default as About } from "./sections/About";
+export { default as Contact } from "./sections/Contact";
+export { default as PostListing } from "./sections/PostListing";
+export { default as Projects } from "./sections/projects";

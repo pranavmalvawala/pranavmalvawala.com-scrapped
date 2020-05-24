@@ -12,7 +12,7 @@ import {
 } from "../components/index";
 
 const IndexPage = ({ location, data }) => {
-  console.log(data.projects.edges);
+  //console.log(data.projects.edges);
   const latestPostEdges = data.latest.edges;
   return (
     <Layout location={{ pathName: "/" }}>

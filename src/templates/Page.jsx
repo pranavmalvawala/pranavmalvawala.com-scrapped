@@ -29,7 +29,7 @@ export default class PageTemplate extends Component {
   render() {
     const { slug } = this.props.pageContext;
     const postNode = this.props.data.markdownRemark;
-    console.log("postNode", postNode);
+    //console.log("postNode", postNode);
     const page = postNode.frontmatter;
 
     if (!page.id) {

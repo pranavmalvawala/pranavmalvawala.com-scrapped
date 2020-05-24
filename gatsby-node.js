@@ -76,10 +76,10 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors);
           reject(result.errors);
         }
-        console.log(result);
+        //console.log(result);
         result.data.allMarkdownRemark.edges.forEach((edge) => {
           if (edge.node.frontmatter.template === "page") {
-            console.log(edge.node.frontmatter.template);
+            //console.log(edge.node.frontmatter.template);
             createPage({
               path: edge.node.fields.slug,
               component: pagePage,

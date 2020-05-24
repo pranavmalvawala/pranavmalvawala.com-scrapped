@@ -6,7 +6,6 @@ const Main = styled.main`
   ${mixins.sidePadding};
   margin: 0 auto;
   width: 100%;
-  min-height: 100vh;
   padding-top: 200px;
   padding-bottom: 200px;
   ${media.desktop`

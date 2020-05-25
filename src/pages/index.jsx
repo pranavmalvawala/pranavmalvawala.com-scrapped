@@ -15,7 +15,7 @@ const IndexPage = ({ location, data }) => {
   //console.log(data.projects.edges);
   const latestPostEdges = data.latest.edges;
   return (
-    <Layout location={{ pathName: "/" }}>
+    <Layout>
       <Hero data={data.hero.edges} />
       <PostListing postEdges={latestPostEdges} />
       <Projects data={data.projects.edges} />

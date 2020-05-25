@@ -15,7 +15,7 @@ const StyledMainContainer = styled(Main)`
   padding: 60px 0 0;
 `;
 
-const Layout = ({ children, location }) => {
+const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />

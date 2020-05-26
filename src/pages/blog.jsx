@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { graphql } from "gatsby";
 import Layout from "../layout/index";
 import { theme, mixins, media, Section } from "../styles/index";
+import { PostListingBlog } from "../components/index";
 
 const StyledContainer = styled(Section)`
   ${mixins.flexCenter};
@@ -42,6 +44,7 @@ const StyledNoOfPost = styled.div`
 class BlogPage extends Component {
   state = {
     searchTerm: "",
+    posts: this.props.data.posts.edges,
   };
 
   handleChange = (event) => {
@@ -51,7 +54,8 @@ class BlogPage extends Component {
   };
 
   render() {
-    const { searchTerm } = this.state;
+    const { posts, searchTerm } = this.state;
+    console.log(posts);
     return (
       <Layout>
         <StyledContainer>
@@ -65,6 +69,7 @@ class BlogPage extends Component {
             />
             <StyledNoOfPost>133</StyledNoOfPost>
           </StyledSearchContainer>
+          <PostListingBlog posts={posts} />
         </StyledContainer>
       </Layout>
     );
@@ -72,3 +77,32 @@ class BlogPage extends Component {
 }
 
 export default BlogPage;
+
+export const pageQuery = graphql`
+  query BlogQuery {
+    posts: allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [fields___date], order: DESC }
+      filter: { frontmatter: { template: { eq: "post" } } }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+            date
+          }
+          excerpt(pruneLength: 180)
+          timeToRead
+          frontmatter {
+            title
+            tags
+            categories
+            date
+            template
+            description
+          }
+        }
+      }
+    }
+  }
+`;

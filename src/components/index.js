@@ -7,5 +7,6 @@ export { default as Footer } from "./Footer";
 export { default as Hero } from "./sections/Hero";
 export { default as About } from "./sections/About";
 export { default as Contact } from "./sections/Contact";
-export { default as PostListing } from "./sections/PostListing";
+export { default as PostListingHome } from "./sections/PostListingHome";
 export { default as Projects } from "./sections/projects";
+export { default as PostListingBlog } from "./PostListingBlog";

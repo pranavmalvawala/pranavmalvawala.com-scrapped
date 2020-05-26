@@ -7,7 +7,7 @@ import {
   Hero,
   About,
   Contact,
-  PostListing,
+  PostListingHome,
   Projects,
 } from "../components/index";
 
@@ -17,7 +17,7 @@ const IndexPage = ({ location, data }) => {
   return (
     <Layout>
       <Hero data={data.hero.edges} />
-      <PostListing postEdges={latestPostEdges} />
+      <PostListingHome postEdges={latestPostEdges} />
       <Projects data={data.projects.edges} />
       {/* <About data={data.about.edges} /> */}
       {/* <Contact data={data.contact.edges} /> */}

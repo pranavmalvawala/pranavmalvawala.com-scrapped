@@ -5,12 +5,19 @@ const DARK_BG = "#020c1b";
 const BG = "#0a192f";
 const DARK_GRAY = "#202020";
 const DARKER_GRAY = "#1a1a1a";
+const LIGHT_GRAY = "#2a2a2a";
+const PINKISH = "#ffa7c4";
+const DAN_BG_COLOR = "#282c35";
 
 const theme = {
   colors: {
     darkGray: DARK_GRAY,
     darkNavy: DARK_BG,
     darkerGray: DARKER_GRAY,
+    lightGray: LIGHT_GRAY,
+    pinkish: PINKISH,
+    danBgColor: DAN_BG_COLOR,
+    normal: "#ffffff",
     navy: BG,
     lightNavy: "#172a45",
     lightestNavy: "#303C55",

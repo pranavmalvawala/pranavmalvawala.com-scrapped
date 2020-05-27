@@ -45,17 +45,31 @@ class BlogPage extends Component {
   state = {
     searchTerm: "",
     posts: this.props.data.posts.edges,
+    filteredPosts: this.props.data.posts.edges,
   };
 
   handleChange = (event) => {
     const { name, value } = event.target;
 
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => this.filterPosts());
+  };
+
+  filterPosts = () => {
+    const { posts, searchTerm } = this.state;
+
+    const filteredPosts = posts.filter((post) =>
+      post.node.frontmatter.title
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase())
+    );
+
+    this.setState({ filteredPosts });
   };
 
   render() {
-    const { posts, searchTerm } = this.state;
-    console.log(posts);
+    const { filteredPosts, searchTerm } = this.state;
+    const filterCount = filteredPosts.length;
+
     return (
       <Layout>
         <StyledContainer>
@@ -67,9 +81,9 @@ class BlogPage extends Component {
               placeholder="Search posts..."
               onChange={this.handleChange}
             />
-            <StyledNoOfPost>133</StyledNoOfPost>
+            <StyledNoOfPost>{filterCount}</StyledNoOfPost>
           </StyledSearchContainer>
-          <PostListingBlog posts={posts} />
+          <PostListingBlog posts={filteredPosts} />
         </StyledContainer>
       </Layout>
     );

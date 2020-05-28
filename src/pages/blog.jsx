@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
 import Layout from "../layout/index";
 import { theme, mixins, media, Section } from "../styles/index";
 import { PostListingBlog } from "../components/index";
+
+const { colors } = theme;
 
 const StyledContainer = styled(Section)`
   ${mixins.flexCenter};
@@ -40,6 +42,23 @@ const StyledNoOfPost = styled.div`
   text-align: center;
   font-size: 1.4rem;
 `;
+const StyledTagsContainer = styled.div`
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  a {
+    background-color: ${colors.darkerGray};
+    padding: 10px 15px;
+    margin-right: 0.5rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    padding-top: 15px;
+    &:hover {
+      background-color: #111;
+    }
+  }
+`;
 
 class BlogPage extends Component {
   state = {
@@ -69,6 +88,8 @@ class BlogPage extends Component {
   render() {
     const { filteredPosts, searchTerm } = this.state;
     const filterCount = filteredPosts.length;
+    const categories = this.props.data.categories.group;
+    console.log(categories);
 
     return (
       <Layout>
@@ -83,6 +104,19 @@ class BlogPage extends Component {
             />
             <StyledNoOfPost>{filterCount}</StyledNoOfPost>
           </StyledSearchContainer>
+          <StyledTagsContainer>
+            {categories.map((category) => {
+              return (
+                <Link
+                  to={`/categories/${category.fieldValue.toLowerCase()}`}
+                  className="category-filter"
+                  key={category.fieldValue}
+                >
+                  {category.fieldValue}
+                </Link>
+              );
+            })}
+          </StyledTagsContainer>
           <PostListingBlog posts={filteredPosts} />
         </StyledContainer>
       </Layout>
@@ -116,6 +150,12 @@ export const pageQuery = graphql`
             description
           }
         }
+      }
+    }
+    categories: allMarkdownRemark(limit: 2000) {
+      group(field: frontmatter___categories) {
+        fieldValue
+        totalCount
       }
     }
   }

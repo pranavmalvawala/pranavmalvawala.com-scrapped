@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby";
 import Layout from "../layout/index";
 import { theme, mixins, media, Section } from "../styles/index";
 import { PostListingBlog } from "../components/index";
+import { filter } from "lodash";
 
 const { colors } = theme;
 
@@ -59,10 +60,21 @@ const StyledTagsContainer = styled.div`
     }
   }
 `;
+const StyledButton = styled.button`
+  background-color: ${(props) =>
+    props.isSelected ? colors.lightestNavy : colors.darkGray};
+  padding: 10px 15px;
+  margin-right: 0.5rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  padding-top: 15px;
+  color: ${colors.lightestSlate};
+`;
 
 class BlogPage extends Component {
   state = {
     searchTerm: "",
+    filters: [],
     posts: this.props.data.posts.edges,
     filteredPosts: this.props.data.posts.edges,
   };
@@ -74,22 +86,42 @@ class BlogPage extends Component {
   };
 
   filterPosts = () => {
-    const { posts, searchTerm } = this.state;
+    const { posts, searchTerm, filters } = this.state;
 
-    const filteredPosts = posts.filter((post) =>
-      post.node.frontmatter.title
+    const filterCategories = this.searchCategories(posts, filters);
+    const filteredPosts = posts.filter((post) => {
+      return post.node.frontmatter.title
         .toLowerCase()
-        .includes(searchTerm.toLowerCase())
-    );
+        .includes(searchTerm.toLowerCase());
+    });
 
     this.setState({ filteredPosts });
   };
 
+  handleFilter = (category) => {
+    let { filters } = this.state;
+
+    if (!filters.includes(category)) {
+      filters.push(category);
+    } else {
+      filters = filters.filter((e) => e !== category);
+    }
+
+    this.setState({ filters }, () => this.filterPosts());
+  };
+
+  searchCategories = (posts, filters) => {
+    const filtersPosts = posts.filter((post) => {
+      return filters.map((e) => post.node.frontmatter.categories.includes(e));
+    });
+    console.log(filtersPosts);
+    return filtersPosts;
+  };
+
   render() {
-    const { filteredPosts, searchTerm } = this.state;
+    const { filteredPosts, searchTerm, filters } = this.state;
     const filterCount = filteredPosts.length;
     const categories = this.props.data.categories.group;
-    console.log(categories);
 
     return (
       <Layout>
@@ -107,13 +139,15 @@ class BlogPage extends Component {
           <StyledTagsContainer>
             {categories.map((category) => {
               return (
-                <Link
-                  to={`/categories/${category.fieldValue.toLowerCase()}`}
-                  className="category-filter"
+                <StyledButton
+                  onClick={() => this.handleFilter(category.fieldValue)}
+                  isSelected={filters.includes(category.fieldValue)}
+                  // to={`/categories/${category.fieldValue.toLowerCase()}`}
+                  // className="category-filter"
                   key={category.fieldValue}
                 >
                   {category.fieldValue}
-                </Link>
+                </StyledButton>
               );
             })}
           </StyledTagsContainer>

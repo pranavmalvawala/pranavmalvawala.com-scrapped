@@ -89,7 +89,8 @@ class BlogPage extends Component {
     const { posts, searchTerm, filters } = this.state;
 
     const filterCategories = this.searchCategories(posts, filters);
-    const filteredPosts = posts.filter((post) => {
+    console.log("return value ", filterCategories);
+    const filteredPosts = filterCategories.filter((post) => {
       return post.node.frontmatter.title
         .toLowerCase()
         .includes(searchTerm.toLowerCase());
@@ -111,11 +112,23 @@ class BlogPage extends Component {
   };
 
   searchCategories = (posts, filters) => {
-    const filtersPosts = posts.filter((post) => {
-      return filters.map((e) => post.node.frontmatter.categories.includes(e));
-    });
-    console.log(filtersPosts);
-    return filtersPosts;
+    if (filters.length === 0) {
+      return posts;
+    }
+
+    let result = [];
+    for (let post of posts) {
+      for (let filter of filters) {
+        if (post.node.frontmatter.categories.includes(filter)) {
+          result.push(post);
+        }
+      }
+    }
+
+    const output = Array.from(new Set(result.map((a) => a)));
+
+    console.log(output);
+    return output;
   };
 
   render() {

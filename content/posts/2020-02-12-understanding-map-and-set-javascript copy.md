@@ -1,11 +1,13 @@
 ---
 date: 2020-02-12
-title: "Understanding Map and Set in JavaScript"
+title: "A new one"
 template: post
 thumbnail: "../thumbnails/js.png"
 slug: understanding-map-and-set-javascript
 categories:
   - Code
+  - Popular
+  - Tools
 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
 tags:
   - javascript

@@ -1,12 +1,12 @@
 ---
 date: 2020-03-31
-title: 'Understanding Default Parameters in JavaScript'
+title: "Understanding Default Parameters in JavaScript"
 template: post
-thumbnail: '../thumbnails/js.png'
+thumbnail: "../thumbnails/js.png"
 slug: default-parameters-javascript
 categories:
-  - Code
-description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,'
+  - Popular
+description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
 tags:
   - javascript
   - fundamentals
@@ -27,7 +27,7 @@ In the following code block, you will create a function that returns the cube of
 ```js
 // Define a function to cube a number
 function cube(x) {
-  return x * x * x
+  return x * x * x;
 }
 ```
 
@@ -37,7 +37,7 @@ Now take a look at this next code block, which calls the `cube` function you jus
 
 ```js
 // Invoke cube function
-cube(10)
+cube(10);
 ```
 
 This will give the following output:
@@ -50,10 +50,10 @@ In this case, `10` is an _argument_—a value passed to a function when it is in
 
 ```js
 // Assign a number to a variable
-const number = 10
+const number = 10;
 
 // Invoke cube function
-cube(number)
+cube(number);
 ```
 
 This will yield the same result:
@@ -66,7 +66,7 @@ If you do not pass an argument to a function that expects one, the function will
 
 ```js
 // Invoke the cube function without passing an argument
-cube()
+cube();
 ```
 
 This will return:
@@ -88,14 +88,14 @@ Without default parameters, you would have to explicitly check for `undefined` v
 ```js
 // Check for undefined manually
 function cube(x) {
-  if (typeof x === 'undefined') {
-    x = 5
+  if (typeof x === "undefined") {
+    x = 5;
   }
 
-  return x * x * x
+  return x * x * x;
 }
 
-cube()
+cube();
 ```
 
 This uses a [conditional statement](/how-to-write-conditional-statements-in-javascript) to check if the value has been automatically provided as `undefined`, then sets the value of `x` as `5`. This will result in the following output:
@@ -109,7 +109,7 @@ In contrast, using default parameters accomplishes the same goal in much less co
 ```js
 // Define a cube function with a default value
 function cube(x = 5) {
-  return x * x * x
+  return x * x * x;
 }
 ```
 
@@ -117,7 +117,7 @@ Now when the `cube` function is invoked without an argument, it will assign `5` 
 
 ```js
 // Invoke cube function without an argument
-cube()
+cube();
 ```
 
 ```terminal
@@ -128,7 +128,7 @@ It will still function as intended when an argument is passed, ignoring the defa
 
 ```js
 // Invoke cube function with an argument
-cube(2)
+cube(2);
 ```
 
 ```terminal
@@ -139,7 +139,7 @@ However, one important caveat to note is that the default parameter value will a
 
 ```js
 // Invoke cube function with undefined
-cube(undefined)
+cube(undefined);
 ```
 
 This will give the calculation with `x` equal to `5`:
@@ -160,24 +160,24 @@ First, set parameters using a [number](https://www.digitalocean.com/community/tu
 
 ```js
 // Create functions with a default value for each data type
-const defaultNumber = (number = 42) => console.log(number)
-const defaultString = (string = 'Shark') => console.log(string)
-const defaultBoolean = (boolean = true) => console.log(boolean)
-const defaultObject = (object = { id: 7 }) => console.log(object)
-const defaultArray = (array = [1, 2, 3]) => console.log(array)
-const defaultNull = (nullValue = null) => console.log(nullValue)
+const defaultNumber = (number = 42) => console.log(number);
+const defaultString = (string = "Shark") => console.log(string);
+const defaultBoolean = (boolean = true) => console.log(boolean);
+const defaultObject = (object = { id: 7 }) => console.log(object);
+const defaultArray = (array = [1, 2, 3]) => console.log(array);
+const defaultNull = (nullValue = null) => console.log(nullValue);
 ```
 
 When these functions are invoked without parameters, they will all use the default values:
 
 ```js
 // Invoke each function
-defaultNumber()
-defaultString()
-defaultBoolean()
-defaultObject()
-defaultArray()
-defaultNull()
+defaultNumber();
+defaultString();
+defaultBoolean();
+defaultObject();
+defaultArray();
+defaultNull();
 ```
 
 ```terminal
@@ -194,7 +194,7 @@ Note that any object created in a default parameter will be created every time t
 ```js
 // Define a settings function with a default object
 function settings(options = {}) {
-  const { theme, debug } = options
+  const { theme, debug } = options;
 
   // Do something with settings
 }
@@ -213,10 +213,10 @@ First, declare a `sum()` function with multiple default parameters:
 ```js
 // Define a function to add two values
 function sum(a = 1, b = 2) {
-  return a + b
+  return a + b;
 }
 
-sum()
+sum();
 ```
 
 This will result in the following default calculation:
@@ -230,11 +230,11 @@ Additionally, the value used in a parameter can be used in any subsequent defaul
 ```js
 // Define a function to create a user object using parameters
 function createUser(name, rank, userObj = { name, rank }) {
-  return userObj
+  return userObj;
 }
 
 // Create user
-const user = createUser('Jean-Luc Picard', 'Captain')
+const user = createUser("Jean-Luc Picard", "Captain");
 ```
 
 If you call `user` here, you will get the following:
@@ -250,14 +250,14 @@ Here is an example with the default parameter at the beginning of the list:
 ```js
 // Define a function with a default parameter at the start of the list
 function defaultFirst(a = 1, b) {
-  return a + b
+  return a + b;
 }
 ```
 
 When calling this function, you would have to call `defaultFirst()` with two arguments:
 
 ```js
-defaultFirst(undefined, 2)
+defaultFirst(undefined, 2);
 ```
 
 This would give the following:
@@ -271,10 +271,10 @@ Here is an example with the default parameter at the end of the list:
 ```js
 // Define a function with a default parameter at the end of the list
 function defaultLast(a, b = 1) {
-  return a + b
+  return a + b;
 }
 
-defaultLast(2)
+defaultLast(2);
 ```
 
 This would yield the same value:
@@ -290,21 +290,21 @@ For a real-world example, here is a function that will create a DOM element, and
 ```js
 // Define function to create an element
 function createNewElement(tag, text, classNames = []) {
-  const el = document.createElement(tag)
-  el.textContent = text
+  const el = document.createElement(tag);
+  el.textContent = text;
 
-  classNames.forEach(className => {
-    el.classList.add(className)
-  })
+  classNames.forEach((className) => {
+    el.classList.add(className);
+  });
 
-  return el
+  return el;
 }
 ```
 
 You can call the function with some classes in an array:
 
 ```js
-const greeting = createNewElement('p', 'Hello!', ['greeting', 'active'])
+const greeting = createNewElement("p", "Hello!", ["greeting", "active"]);
 ```
 
 Calling `greeting` will give the following value:
@@ -316,7 +316,7 @@ Calling `greeting` will give the following value:
 However, if you leave the `classNames` array out of the function call, it will still work.
 
 ```js
-const greeting2 = createNewElement('p', 'Hello!')
+const greeting2 = createNewElement("p", "Hello!");
 ```
 
 `greeting2` now has the following value:
@@ -344,12 +344,12 @@ In this code block, you will create a function to return a random number, and th
 ```js
 // Define a function to return a random number from 1 to 10
 function getRandomNumber() {
-  return Math.floor(Math.random() * 10)
+  return Math.floor(Math.random() * 10);
 }
 
 // Use the random number function as a default parameter for the cube function
 function cube(x = getRandomNumber()) {
-  return x * x * x
+  return x * x * x;
 }
 ```
 
@@ -357,8 +357,8 @@ Now invoking the `cube` function without a parameter will have potentially diffe
 
 ```js
 // Invoke cube function twice for two potentially different results
-cube()
-cube()
+cube();
+cube();
 ```
 
 The output from these function calls will vary:
@@ -376,10 +376,10 @@ In the following example, a random number is assigned to `x`, which is used as t
 // Assign a random number to x
 // Assign the cube root of the result of the cube function and x to y
 function doesXEqualY(x = getRandomNumber(), y = Math.cbrt(cube(x))) {
-  return x === y
+  return x === y;
 }
 
-doesXEqualY()
+doesXEqualY();
 ```
 
 This will give the following:
@@ -394,14 +394,14 @@ A default parameter can even be a function definition, as seen in this example, 
 // Define a function with a default parameter that is an anonymous function
 function outer(
   parameter = function inner() {
-    return 100
+    return 100;
   }
 ) {
-  return parameter()
+  return parameter();
 }
 
 // Invoke outer function
-outer()
+outer();
 ```
 
 ```terminal

@@ -1,13 +1,12 @@
 ---
 date: 2020-02-17
-title: 'macOS Catalina 10.15: Setting up a Brand New Mac for Development'
+title: "macOS Catalina 10.15: Setting up a Brand New Mac for Development"
 template: post
-thumbnail: '../thumbnails/apple.png'
+thumbnail: "../thumbnails/apple.png"
 slug: setting-up-a-brand-new-mac-for-development
 categories:
   - Tools
-  - Popular
-description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,'
+description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,"
 tags:
   - macOS
 ---

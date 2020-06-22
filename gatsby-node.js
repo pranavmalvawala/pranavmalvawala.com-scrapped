@@ -52,6 +52,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const pagePage = path.resolve("src/templates/Page.jsx");
+    const postPage = path.resolve("src/templates/post.jsx");
 
     resolve(
       graphql(
@@ -76,13 +77,22 @@ exports.createPages = ({ graphql, actions }) => {
           console.log(result.errors);
           reject(result.errors);
         }
-        //console.log(result);
+
         result.data.allMarkdownRemark.edges.forEach((edge) => {
           if (edge.node.frontmatter.template === "page") {
-            //console.log(edge.node.frontmatter.template);
             createPage({
               path: edge.node.fields.slug,
               component: pagePage,
+              context: {
+                slug: edge.node.fields.slug,
+              },
+            });
+          }
+
+          if (edge.node.frontmatter.template === "post") {
+            createPage({
+              path: edge.node.fields.slug,
+              component: postPage,
               context: {
                 slug: edge.node.fields.slug,
               },

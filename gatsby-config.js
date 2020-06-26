@@ -21,6 +21,7 @@ module.exports = {
   plugins: [
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-lodash",
+    `gatsby-plugin-postcss`,
     `gatsby-plugin-styled-components`,
     {
       resolve: "gatsby-source-filesystem",

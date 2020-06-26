@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Head, Navigation, Footer } from "../components/index";
+import "./layout.css";
 import { GlobalStyle, Main } from "../styles/index";
 
 // enables smooth scrolling to the div matching the id
